@@ -75,7 +75,7 @@ resource "aws_eip" "nat" {
 
 resource "aws_nat_gateway" "nat-gw" {
   allocation_id = aws_eip.nat.id
-  subnet_id = aws_subnet.my-public-subnet[count.index].id
+  subnet_id = aws_subnet.my-public-subnet[0].id
   connectivity_type = "public"
   depends_on = [aws_internet_gateway.my-igw]  # To ensure proper ordering, it is recommended to add an explicit dependency on the Internet Gateway for the VPC.
 }
